@@ -28,7 +28,7 @@
 }
 
 .join_room_button {
-  background-color: #2d8cff;
+  background-color: #363636;
   border: 1px solid #e5e5e5;
   color: white;
   font-size: 13px;
@@ -40,7 +40,7 @@
 }
 
 .join_room_button:hover {
-  background-color: #3679cb;
+  background-color: #FDA058;
 }
 
 .create_room_button {

@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../../assets/logo.png'
+import logo from '../../assets/mlogo.png'
 import './IntroPage.css'
 import ConButtons from './ConButtons'
 const IntroPage = (props) => {
