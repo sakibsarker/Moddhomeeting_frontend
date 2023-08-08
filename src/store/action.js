@@ -1,5 +1,5 @@
 const Actions={
-    SER_IS_ROOM_HOST:" SER_IS_ROOM_HOST",
+    SER_IS_ROOM_HOST:"SER_IS_ROOM_HOST",
 };
 
 export const setIsRoomHost=(isRoomHost)=>{

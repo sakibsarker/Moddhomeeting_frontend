@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 import { setIsRoomHost } from '../../store/action'
 
 
-const JoinRoom = () => {
+const JoinRoom = (props) => {
   const {setIsRoomHostAction}=props;
 
   const search=useLocation().search;
