@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import logo from '../../assets/mlogo.png'
 import './IntroPage.css'
 import ConButtons from './ConButtons'
-const IntroPage = (props) => {
+import {connect} from 'react-redux'
+import {setIsRoomHost} from '../../store/action'
+
+const IntroPage = ({setIsRoomHostAction}) => {
+  useEffect(()=>{
+    setIsRoomHostAction(false)
+  },[])
   return (
     <div className="introduction_page_container">
       <div className="introduction_page_panel">
@@ -13,4 +19,11 @@ const IntroPage = (props) => {
   )
 }
 
-export default IntroPage
+const mapActionsToProps=(dispatch)=>{
+  return{
+    setIsRoomHostAction:(isRoomHost)=>dispatch(setIsRoomHost(isRoomHost))
+  }
+}
+
+
+export default connect(null,mapActionsToProps)(IntroPage);
