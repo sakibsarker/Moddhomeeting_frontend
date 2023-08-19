@@ -3,10 +3,12 @@ import './JoinRoom.css'
 import {useLocation} from 'react-router-dom'
 import {connect} from 'react-redux'
 import { setIsRoomHost } from '../../store/action'
+import JoinRoomTitle from './JoinRoomTitle'
+import JoinRoomContent from './JoinRoomContent'
 
 
 const JoinRoom = (props) => {
-  const {setIsRoomHostAction}=props;
+  const {setIsRoomHostAction,isRoomHost}=props;
 
   const search=useLocation().search;
 
@@ -21,7 +23,13 @@ const JoinRoom = (props) => {
 
 
   return (
-    <div>JoinRoom</div>
+    <div className='join_room_page_container'>
+      <div className='join_room_page_panel'>
+        <JoinRoomTitle isRoomHost={isRoomHost}/>
+        <JoinRoomContent/>
+      </div>
+      
+    </div>
   )
 }
 
