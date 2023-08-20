@@ -35,7 +35,7 @@ const JoinRoomInput = (props) => {
         <Input
         placeholder="Enter your name"
         value={nameValue}
-        changeHandler={handleRoomIdValueChange}
+        changeHandler={handleNameValueChange}
         />
     </div>
   )
