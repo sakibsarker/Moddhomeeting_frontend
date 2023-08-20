@@ -1,9 +1,27 @@
 import React from 'react'
+import '../RoomPage/RoomPage.css'
+import ParticipantsSection from './ParticipantsSection/ParticipantsSection'
+import VideoSection from './VideoSection/VideoSection'
+import ChatSection from './ChatSection/ChatSection'
+import RoomLabel from './RoomLabel'
+import { connect } from 'react-redux';
 
-const RoomPage = () => {
+const RoomPage = ({roomId}) => {
   return (
-    <div>RoomPage</div>
+    <div className='room_container'>
+     <ParticipantsSection/>
+     <VideoSection/>
+     <ChatSection/>
+     <RoomLabel roomId={roomId}/>
+    </div>
   )
 }
 
-export default RoomPage
+const mapStoreStateProps=(state)=>{
+  return{
+    ...state,
+    
+  }
+}
+
+export default connect(mapStoreStateProps)(RoomPage);
