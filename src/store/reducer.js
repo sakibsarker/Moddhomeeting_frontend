@@ -5,6 +5,7 @@ const initState={
     isRoomHost:false,
     connectOnlyWithAudio:false,
     roomId:null,
+    showOverlay:true,
 }
 
 
@@ -32,7 +33,11 @@ const reducer=(state=initState,action)=>{
                 identity:action.identity
 
             }
-
+        case Actions.SET_SHOW_OVERLEY:
+            return{
+                ...state,
+                showOverlay:action.showOverlay
+            }
 
             default:
                 return state;
