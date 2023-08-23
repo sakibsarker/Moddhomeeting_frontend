@@ -1,5 +1,6 @@
 import { setShowOverlay } from '../store/action';
-import store from '../store/store'
+import store from '../store/store';
+import * as wss from '../utils/wss';
 
 const defaultConstraints={
     audio:true,
@@ -25,7 +26,7 @@ export const getLocalPreviewAndInitRoomConnection=async (
 
 
 
-        // isRoom? wss.createNewRoom(identity):wss.joinRoom(roomId,identity);
+        isRoomHost? wss.createNewRoom(identity):wss.joinRoom(roomId,identity);
     }).catch(err=>{
         console.log('Error occurred when trying to get access to local stream');
         console.log(err);

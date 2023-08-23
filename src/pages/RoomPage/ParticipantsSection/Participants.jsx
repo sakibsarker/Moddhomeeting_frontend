@@ -1,20 +1,5 @@
 import React from 'react'
-
-
-const dummyParticipants=[
-  {
-    identity:'Sakib',
-  },
-  {
-    identity:'Anna',
-  },
-  {
-    identity:'Marek',
-  },
-  {
-    identity:'Darius',
-  },
-];
+import { connect } from 'react-redux';
 
 const SingleParticipants=(props)=>{
   const {identity,lastItem,participant}=props;
@@ -27,14 +12,19 @@ const SingleParticipants=(props)=>{
   </>
 }
 
-const Participants = () => {
+const Participants = ({participants}) => {
+
+  //error fix anoter methos
+  console.log(participants);
+  // const participantsArray = Array.isArray(participants) ? participants : [participants];
+
   return (
     <div className='participants_container'>
-      {dummyParticipants.map((participant,index)=>{
+      {participants.map((participant,index)=>{
       return(
         <SingleParticipants
         key={participant.identity}
-        lastItem={dummyParticipants.length===index+1}
+        lastItem={participants.length===index+1}
         participant={participant}
         identity={participant.identity}
         />
@@ -44,4 +34,11 @@ const Participants = () => {
   )
 }
 
-export default Participants
+const mapStoreStateToProps=(state)=>{
+  return{
+    ...state,
+    
+  }
+}
+
+export default connect(mapStoreStateToProps)(Participants);
