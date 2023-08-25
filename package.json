@@ -13,15 +13,20 @@
     "@reduxjs/toolkit": "^1.9.5",
     "@supabase/supabase-js": "^2.26.0",
     "axios": "^1.4.0",
+    "events": "^3.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.1.1",
     "react-router-dom": "^6.14.2",
-    "socket.io-client": "^4.7.2"
+    "simple-peer": "^9.11.1",
+    "socket.io-client": "^4.7.2",
+    "stream-browserify": "^3.0.0",
+    "util": "^0.12.5"
   },
   "devDependencies": {
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
+    "@types/simple-peer": "^9.11.5",
     "@vitejs/plugin-react": "^4.0.1",
     "eslint": "^8.44.0",
     "eslint-plugin-react": "^7.32.2",

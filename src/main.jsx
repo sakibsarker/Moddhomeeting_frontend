@@ -4,10 +4,13 @@ import App from './App.jsx'
 import './index.css'
 import {store} from './store/store.js'
 import {Provider} from 'react-redux'
+import '../global-shim.js';
+
+
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <Provider store={store}>
     <App />
     </Provider>
-  </React.StrictMode>,
+  // </React.StrictMode>,
 )
