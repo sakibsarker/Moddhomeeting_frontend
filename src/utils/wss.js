@@ -35,6 +35,7 @@ export const createNewRoom=(identity)=>{
 }
 
 export const joinRoom=(identity,roomId)=>{
+    //emit an event to server that we woulde to join room
     const data={
         roomId,
         identity

@@ -16,17 +16,16 @@ export const getLocalPreviewAndInitRoomConnection=async (
 )=>{
     navigator.mediaDevices
     .getUserMedia(defaultConstraints)
-    .then(strem=>{
+    .then((strem)=>{
         console.log('Successfuly received local stream')
         localStream=strem;
         showLocalVideoPreview(localStream);
+
+        ///dispatch and action to hide overlay
+
         store.dispatch(setShowOverlay(false))
-        
-        //dispatch and action to hide overlay
+        isRoomHost? wss.createNewRoom(identity):wss.joinRoom(identity,roomId);
 
-
-
-        isRoomHost? wss.createNewRoom(identity):wss.joinRoom(roomId,identity);
     }).catch(err=>{
         console.log('Error occurred when trying to get access to local stream');
         console.log(err);

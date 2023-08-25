@@ -16,15 +16,16 @@ const Participants = ({participants}) => {
 
   //error fix anoter methos
   console.log(participants);
-  // const participantsArray = Array.isArray(participants) ? participants : [participants];
+  const participantsArray = Array.isArray(participants) ? participants : [participants];
+  console.log(participantsArray)
 
   return (
     <div className='participants_container'>
-      {participants.map((participant,index)=>{
+      {participantsArray.map((participant,index)=>{
       return(
         <SingleParticipants
         key={participant.identity}
-        lastItem={participants.length===index+1}
+        lastItem={participantsArray.length===index+1}
         participant={participant}
         identity={participant.identity}
         />
