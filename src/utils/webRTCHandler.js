@@ -64,7 +64,7 @@ export const prepareNewPeerConnection=(connUserSocketId,isInitiator)=>{
         wss.signalPeerData(signalData);
     })
 
-    peers[connUserSocketId].on('stream)',(stream)=>{
+    peers[connUserSocketId].on('stream',(stream)=>{
         
        
         console.log('new stream came');
@@ -96,11 +96,29 @@ const showLocalVideoPreview=(stream)=>{
     }
 
     videoContainer.appendChild(videoElement);
-    videosContainer.appendChild(videoContainer)
+    videosContainer.appendChild(videoContainer);
 
 
 }
 
+ //display incoming stream
+
 const addStream=(stream,connUserSocketId)=>{
-    //display incoming stream
+    const videosContainer=document.getElementById('videos_portal');
+    const videoContainer=document.createElement('div');
+    videoContainer.id=connUserSocketId;
+
+    videoContainer.classList.add('video_track_container');
+    const videoElement=document.createElement('video');
+    videoElement.autoplay=true;
+    videoElement.srcObject=stream;
+    videoElement.id=`${connUserSocketId}-video`;
+
+    videoElement.onloadedmetadata=()=>{
+        videoElement.play();
+    }
+
+    videoContainer.appendChild(videoElement);
+    videosContainer.appendChild(videoContainer);
+
 }
