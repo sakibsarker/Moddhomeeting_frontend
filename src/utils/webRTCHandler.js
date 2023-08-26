@@ -84,6 +84,33 @@ export const handleSignalingData=(data)=>{
     peers[data.connUserSocketId].signal(data.signal);
 }
 
+export const removePeerConnection=(data)=>{
+    const { socketId }=data;
+    const videoContainer=document.getElementById(socketId);
+    const videoEl=document.getElementById(`${socketId}-video`);
+    if(videoContainer && videoEl){
+        const tracks=videoEl.srcObject.getTracks();
+
+        tracks.forEach((track) => {
+            track.stop();
+          });
+
+        videoEl.srcObject=null;
+        videoContainer.removeChild(videoEl);
+
+        videoContainer.parentNode.removeChild(videoContainer);
+
+        if(peers[socketId]){
+            peers[socketId].destroy();
+        }
+
+        delete peers[socketId];
+    }
+
+   
+
+}
+
 //show local vide preview UI VIDEOS
 const showLocalVideoPreview=(stream)=>{
     const videosContainer=document.getElementById('videos_portal');
@@ -158,10 +185,9 @@ const addStream=(stream,connUserSocketId)=>{
         }
     });
     
-    
 
     
-    
+
 
     videoContainer.appendChild(videoElement);
     videosContainer.appendChild(videoContainer);

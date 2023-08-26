@@ -5,6 +5,9 @@ import './index.css'
 import {store} from './store/store.js'
 import {Provider} from 'react-redux'
 import '../global-shim.js';
+import '../processPolyfill.js';
+import '../polyfills.js';
+
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
