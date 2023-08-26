@@ -5,7 +5,11 @@ import Peer from 'simple-peer';
 
 const defaultConstraints={
     audio:true,
-    video:true,
+    // video:true,
+    video: {
+        width: { min: 1024, ideal: 1280, max: 1920 },
+        height: { min: 576, ideal: 720, max: 1080 },
+      },
 }
 
 let localStream;
@@ -117,6 +121,47 @@ const addStream=(stream,connUserSocketId)=>{
     videoElement.onloadedmetadata=()=>{
         videoElement.play();
     }
+
+    // videoElement.addEventListener("click",()=>{
+    //     if(videoElement.classList.contains("full_screen")){
+    //         videoElement.classList.remove("full_screen");
+    //         videoContainer.style.width = "100";  
+    //         videoContainer.style.height = "100"; 
+    //     }else{
+    //         videoElement.classList.add("full_screen");
+    //     }
+    // })
+
+    videoElement.addEventListener("click", () => {
+        if(videoElement.classList.contains("full_screen")) {
+            videoElement.classList.remove("full_screen");
+            videoContainer.style.width = "";  // Reset to original style
+            videoContainer.style.height = ""; // Reset to original style
+            videoContainer.style.zIndex = ""; // Reset to original style
+            // Reset all other videos to their original sizes
+            document.querySelectorAll('.video_track_container').forEach((el) => {
+                el.style.width = "";
+                el.style.height = "";
+            });
+        } else {
+            videoElement.classList.add("full_screen");
+            videoContainer.style.width = "100%";  
+            videoContainer.style.height = "100%";
+            videoContainer.style.zIndex = "10"; // This will place the full screen video above others
+            // Make other videos smaller or hidden depending on the desired behavior
+            document.querySelectorAll('.video_track_container').forEach((el) => {
+                if(el !== videoContainer) {
+                    el.style.width = "0";  // This hides other videos. Adjust or remove this line if you want a different behavior.
+                    el.style.height = "0"; // This hides other videos. Adjust or remove this line if you want a different behavior.
+                }
+            });
+        }
+    });
+    
+    
+
+    
+    
 
     videoContainer.appendChild(videoElement);
     videosContainer.appendChild(videoContainer);
