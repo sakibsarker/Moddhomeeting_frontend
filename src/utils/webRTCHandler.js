@@ -159,6 +159,9 @@ const addStream=(stream,connUserSocketId)=>{
     //     }
     // })
 
+
+    //fix this for full screen for all gird video size clicked video
+
     videoElement.addEventListener("click", () => {
         if(videoElement.classList.contains("full_screen")) {
             videoElement.classList.remove("full_screen");
@@ -185,11 +188,17 @@ const addStream=(stream,connUserSocketId)=>{
         }
     });
     
-
-    
-
-
     videoContainer.appendChild(videoElement);
     videosContainer.appendChild(videoContainer);
 
+}
+
+//BUTTON LOGIC
+
+export const toggleMic=(isMuted)=>{
+    localStream.getAudioTracks()[0].enabled=isMuted?true:false;
+}
+
+export const toggleCamera=(isDisabled)=>{
+    localStream.getVideoTracks()[0].enabled=isDisabled?true:false;
 }

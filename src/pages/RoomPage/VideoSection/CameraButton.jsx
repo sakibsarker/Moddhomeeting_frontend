@@ -1,12 +1,15 @@
 import React,{useState} from 'react'
 import CameraButtonImg from '../../../assets/camera.svg'
 import CameraButtonImgOff from '../../../assets/cameraOff.svg'
+import * as webRTCHandler from '../../../utils/webRTCHandler'
+
 const CameraButton = () => {
 
     const [isLocalVideoDisabled,setIsLocalVideoDisabled]=useState(false)
 
     const handleCameraButtonPressed=()=>{
-        setIsLocalVideoDisabled(!isLocalVideoDisabled)
+      webRTCHandler.toggleCamera(isLocalVideoDisabled)
+      setIsLocalVideoDisabled(!isLocalVideoDisabled)
     }
   return (
     <div className='video_button_container'>
